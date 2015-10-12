@@ -1,7 +1,7 @@
 {
-  "name": "hound-jscs",
+  "name": "hound-eslint",
   "version": "0.0.1",
-  "description": "JSCS Linter for Hound",
+  "description": "ESLint Linter for Hound",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -9,22 +9,22 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/thoughtbot/hound-jscs.git"
+    "url": "git+https://github.com/thoughtbot/hound-eslint.git"
   },
   "keywords": [
     "hound",
-    "jscs",
+    "eslint",
     "linter",
     "worker"
   ],
   "author": "Sean Doyle <sean.p.doyle24@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/thoughtbot/hound-jscs/issues"
+    "url": "https://github.com/thoughtbot/hound-eslint/issues"
   },
-  "homepage": "https://github.com/thoughtbot/hound-jscs#readme",
+  "homepage": "https://github.com/thoughtbot/hound-eslint#readme",
   "dependencies": {
-    "jscs": "^2.2.1",
+    "eslint": "^1.6.0",
     "node-resque": "^1.0.2",
     "redis": "^2.1.0",
     "rsvp": "^3.1.0"

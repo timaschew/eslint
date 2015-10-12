@@ -1,12 +1,12 @@
-# Hound JSCS
+# Hound ESLint
 
-[JSCS] is a code style linter for programmatically enforcing your style guide.
+[ESLint] is the pluggable linting utility for JavaScript and JSX
 
-`hound-jscs` is a Node service that polls `JavaScriptReviewJob`s from the
-`java_script_review` queue, lints code with `JSCS`, then pushes the results to
+`hound-eslint` is a Node service that polls `EsLintReviewJob`s from the
+`eslint_review` queue, lints code with `ESLint`, then pushes the results to
 the `high` queue, as `CompletedFileReviewJob`s.
 
-[JSCS]: http://jscs.info/
+[ESLint]: http://eslint.org/
 
 ## Testing locally
 

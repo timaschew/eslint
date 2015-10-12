@@ -17,9 +17,9 @@ var linter = new Linter(outbound);
 
 var worker = new Resque.worker({
   connection: { redis: redis },
-  queues: ["jscs_review"],
+  queues: ["eslint_review"],
 }, {
-  "JscsReviewJob": linter.lint.bind(linter),
+  "EsLintReviewJob": linter.lint.bind(linter),
 });
 
 worker.connect(function() {
