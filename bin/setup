@@ -2,4 +2,18 @@
 
 set -e
 
+# Set up node
 npm install
+
+# Set up deploys
+if heroku join --app hound-eslint-staging &> /dev/null; then
+  git remote add staging git@heroku.com:hound-eslint-staging.git || true
+else
+  printf 'Ask for access to the "hound-eslint-staging" Heroku app\n'
+fi
+
+if heroku join --app hound-eslint-production &> /dev/null; then
+  git remote add production git@heroku.com:hound-eslint-production.git || true
+else
+  printf 'Ask for access to the "hound-eslint-production" Heroku app\n'
+fi
