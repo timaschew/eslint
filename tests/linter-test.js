@@ -2,6 +2,26 @@ var Linter = require("../lib/linter");
 
 QUnit.module("Linter");
 
+test("Parsing an ESLint config file", function() {
+  var config = "{ \"rules\": { \"semi\": 2, }, }";
+  var outbound = {
+    enqueue: function(job) {
+      return job;
+    }
+  };
+  var linter = new Linter(outbound);
+
+  deepEqual(
+      linter.parseConfig(config),
+      {
+        globals: {},
+        env: {},
+        rules: { semi: 2 },
+        ecmaFeatures: {}
+      }
+  );
+});
+
 test("ESLint linting", function() {
   var payload = {
     content: "var foo",

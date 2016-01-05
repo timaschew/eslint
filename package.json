@@ -30,10 +30,12 @@
     "eslint": "^1.6.0",
     "node-resque": "^1.1.1",
     "redis": "^2.1.0",
-    "rsvp": "^3.1.0"
+    "rsvp": "^3.1.0",
+    "temp": "^0.8.3"
   },
   "devDependencies": {
     "fakeredis": "^0.3.3",
-    "qunit": "^0.7.7"
+    "qunit": "^0.7.7",
+    "temp": "^0.8.3"
   }
 }
