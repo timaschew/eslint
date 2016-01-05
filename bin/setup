@@ -17,3 +17,5 @@ if heroku join --app hound-eslint-production &> /dev/null; then
 else
   printf 'Ask for access to the "hound-eslint-production" Heroku app\n'
 fi
+
+pgrep redis > /dev/null || echo Redis is not running, make sure it is before running the application.
