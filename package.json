@@ -36,7 +36,6 @@
   },
   "devDependencies": {
     "fakeredis": "^0.3.3",
-    "qunit": "^0.7.7",
-    "temp": "^0.8.3"
+    "qunit": "^0.7.7"
   }
 }

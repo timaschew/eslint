@@ -1,5 +1,6 @@
 var Redis = require("redis");
 var Resque = require("node-resque");
+var Config = require("./lib/config");
 var Linter = require("./lib/linter");
 var Queue = require("./lib/queue");
 
@@ -7,13 +8,21 @@ var redis = Redis.createClient(
   process.env.REDIS_URL || "redis://localhost:6379"
 );
 
-var outbound = new Queue({
+var completedFileReviewQueue = new Queue({
   redis: redis,
   queueName: "high",
   jobName: "CompletedFileReviewJob",
 });
+var reportInvalidConfigQueue = new Queue({
+  redis: redis,
+  queueName: "high",
+  jobName: "ReportInvalidConfigJob",
+});
 
-var linter = new Linter(outbound);
+var linter = new Linter({
+  complete: completedFileReviewQueue,
+  invalid: reportInvalidConfigQueue
+});
 
 var worker = new Resque.multiWorker({
   connection: { redis: redis },
@@ -26,8 +35,8 @@ var worker = new Resque.multiWorker({
 
 worker.start();
 
-process.on("SIGINT", function(){
-  worker.end(function(){
+process.on("SIGINT", function() {
+  worker.end(function() {
     process.exit();
   });
 });

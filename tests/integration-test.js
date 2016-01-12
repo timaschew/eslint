@@ -16,7 +16,10 @@ asyncTest("Linter communicates over resque", function() {
     redis: redis,
     queueName: "high",
   });
-  var linter = new Linter(outbound);
+  var linter = new Linter({
+    complete: outbound,
+    invalid: outbound,
+  });
 
   var inboundJob = {
     content: "var foo",
