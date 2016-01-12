@@ -2,4 +2,4 @@ java_script:
   config_file: .jshintrc
 jscs:
   enabled: true
-  config_file: https://raw.githubusercontent.com/thoughtbot/guides/master/style/javascript/.jscsrc
+  config_file: .jscsrc
