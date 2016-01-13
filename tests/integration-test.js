@@ -1,8 +1,8 @@
 var Redis = require("fakeredis");
 var RSVP = require("rsvp");
 var Linter = require("../lib/linter");
-var Queue = require("../lib/queue");
 var lastJob = require("./helpers/redis").lastJob;
+var HoundJavascript = require("hound-javascript");
 
 QUnit.module("Integration");
 
@@ -12,14 +12,8 @@ RSVP.on("error", function(error) {
 
 asyncTest("Linter communicates over resque", function() {
   var redis = Redis.createClient();
-  var outbound = new Queue({
-    redis: redis,
-    queueName: "high",
-  });
-  var linter = new Linter({
-    complete: outbound,
-    invalid: outbound,
-  });
+  var houndJavascript = new HoundJavascript(redis);
+  var linter = new Linter(houndJavascript);
 
   var inboundJob = {
     content: "var foo",

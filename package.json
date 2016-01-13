@@ -29,6 +29,7 @@
   "dependencies": {
     "eslint": "^1.6.0",
     "eslint-plugin-react": "^3.14.0",
+    "hound-javascript": "0.0.1",
     "node-resque": "^1.1.1",
     "redis": "^2.1.0",
     "rsvp": "^3.1.0",

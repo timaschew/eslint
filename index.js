@@ -1,28 +1,14 @@
 var Redis = require("redis");
 var Resque = require("node-resque");
-var Config = require("./lib/config");
+var HoundJavascript = require("hound-javascript");
 var Linter = require("./lib/linter");
-var Queue = require("./lib/queue");
 
 var redis = Redis.createClient(
   process.env.REDIS_URL || "redis://localhost:6379"
 );
 
-var completedFileReviewQueue = new Queue({
-  redis: redis,
-  queueName: "high",
-  jobName: "CompletedFileReviewJob",
-});
-var reportInvalidConfigQueue = new Queue({
-  redis: redis,
-  queueName: "high",
-  jobName: "ReportInvalidConfigJob",
-});
-
-var linter = new Linter({
-  complete: completedFileReviewQueue,
-  invalid: reportInvalidConfigQueue
-});
+var houndJavascript = new HoundJavascript(redis);
+var linter = new Linter(houndJavascript);
 
 var worker = new Resque.multiWorker({
   connection: { redis: redis },
