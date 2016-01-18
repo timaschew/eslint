@@ -1,5 +1,6 @@
 var fs = require("fs");
 var path = require("path");
+
 var Config = require("../lib/config");
 
 QUnit.module("Config");
@@ -43,6 +44,17 @@ test("Parsing an ESLint config file with airbnb's config", function() {
     parsedConfig.ecmaFeatures,
     expectedConfig.ecmaFeatures,
     "matching property `ecmaFeatures`"
+  );
+});
+
+test("When there is to given config file", function() {
+  var config = new Config("{}");
+
+  var defaultConfigFile = "config/.eslintrc";
+  deepEqual(
+    config.rawConfig,
+    fs.readFileSync(defaultConfigFile, "utf8", function() {}),
+    "returns the default config file from `config/.eslintrc`"
   );
 });
 
