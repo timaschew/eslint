@@ -1,3 +1,5 @@
+var fs = require("fs");
+var path = require("path");
 var Config = require("../lib/config");
 
 QUnit.module("Config");
@@ -13,6 +15,34 @@ test("Parsing an ESLint config file", function() {
       rules: { semi: 2 },
       ecmaFeatures: {},
     }
+  );
+});
+
+test("Parsing an ESLint config file with airbnb's config", function() {
+  var config = new Config("{ \"extends\": \"airbnb/base\", }");
+
+  var configFile = path.join(__dirname, "fixtures", "airbnb-config.json");
+  var expectedConfig = JSON.parse(fs.readFileSync(configFile, "utf8"));
+  var parsedConfig = config.parse();
+  deepEqual(
+    parsedConfig.globals,
+    expectedConfig.globals,
+    "matching property `globals`"
+  );
+  deepEqual(
+    parsedConfig.env,
+    expectedConfig.env,
+    "matching property `env`"
+  );
+  deepEqual(
+    parsedConfig.rules,
+    expectedConfig.rules,
+    "matching property `rules`"
+  );
+  deepEqual(
+    parsedConfig.ecmaFeatures,
+    expectedConfig.ecmaFeatures,
+    "matching property `ecmaFeatures`"
   );
 });
 
