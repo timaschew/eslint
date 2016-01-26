@@ -29,6 +29,7 @@
   "dependencies": {
     "eslint": "^1.6.0",
     "eslint-config-airbnb": "^3.1.0",
+    "eslint-config-littlebits": "^0.3.0",
     "eslint-plugin-react": "^3.14.0",
     "hound-javascript": "0.0.2",
     "node-resque": "^1.1.1",
