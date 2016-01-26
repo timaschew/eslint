@@ -7,6 +7,8 @@ var redis = Redis.createClient(
   process.env.REDIS_URL || "redis://localhost:6379"
 );
 
+redis.setMaxListeners(Infinity);
+
 var houndJavascript = new HoundJavascript(redis);
 var linter = new Linter(houndJavascript);
 
