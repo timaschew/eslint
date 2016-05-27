@@ -2,7 +2,7 @@
 
 [ESLint] is the pluggable linting utility for JavaScript and JSX
 
-`hound-eslint` is a Node service that polls `EsLintReviewJob`s from the
+`hound-eslint` is a Node service that polls `EslintReviewJob`s from the
 `eslint_review` queue, lints code with `ESLint`, then pushes the results to
 the `high` queue, as `CompletedFileReviewJob`s.
 
