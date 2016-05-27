@@ -14,7 +14,7 @@ var worker = new Resque.multiWorker({
   connection: { redis: redis },
   queues: ["eslint_review"],
 }, {
-  "EslintReviewJob": function(payload, callback) {
+  "EsLintReviewJob": function(payload, callback) {
     linter.lint(payload).finally(callback);
   }
 });
